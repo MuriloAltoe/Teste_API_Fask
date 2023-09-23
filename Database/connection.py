@@ -1,22 +1,18 @@
 import psycopg2
 
 class Cursor():
-    self.cursor
+    def __init__(self) -> None:
+       self.conn = None
 
     def Conectar(self):
-        conn = psycopg2.connect(
-            dbname="nome_do_banco_de_dados",
-            user="seu_usuario",
-            password="sua_senha",
+        self.conn = psycopg2.connect(
+            dbname="postgres",
+            user="user",
+            password="admin",
             host="localhost"
         )
-        self.cursor = conn.cursor()
-        pass
-
-    def Executar(self, scriptsql):
-        self.cursor.execute(scriptsql)
-        pass
-
+        
+        
     def Fechar(self):
-        self.cursor.close()
-        pass
+        self.conn.close()
+        
